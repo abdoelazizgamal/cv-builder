@@ -4,6 +4,10 @@ import { colors, information, sections } from "../utils/constants";
 const EditorContext = createContext({});
 
 const EditorProvider = ({ children }) => {
+  const [mode, SetMode] = useState("dark");
+  const changeMode = () => {
+    mode === "light" ? SetMode("dark") : SetMode("light");
+  };
   const [resumeInformation, setResumeInformation] = useState(information);
   const [activeSectionKey, setActiveSectionKey] = useState(
     Object.keys(sections)[0]
@@ -69,6 +73,8 @@ const EditorProvider = ({ children }) => {
         info,
         activeColor,
         setActiveColor,
+        changeMode,
+        mode,
       }}
     >
       {children}

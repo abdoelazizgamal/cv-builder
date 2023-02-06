@@ -14,15 +14,15 @@ const Project = ({ seTarget, setSource }) => {
     >
       <div className={styles.sectionTitle}>{info.project.sectionTitle}</div>
       <div className={styles.content}>
-        {info.project?.details?.map((item) => (
-          <div className={styles.item}>
+        {info.project?.details?.map((item, index) => (
+          <div className={`${styles.item} item`} key={index}>
             {item.title ? (
               <p className={styles.title}>{item.title}</p>
             ) : (
               <span />
             )}
             {item.link ? (
-              <a className={styles.link} href={item.link}>
+              <a className={`${styles.link} link`} href={item.link}>
                 <Paperclip />
                 {item.link}
               </a>
@@ -30,7 +30,7 @@ const Project = ({ seTarget, setSource }) => {
               <span />
             )}
             {item.github ? (
-              <a className={styles.link} href={item.github}>
+              <a className={`${styles.link} link`} href={item.github}>
                 <GitHub />
                 {item.github}
               </a>

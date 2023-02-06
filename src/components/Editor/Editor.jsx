@@ -84,11 +84,11 @@ const Editor = ({ information }) => {
     setActiveDetailIndex((prev) => (prev === index ? 0 : prev - 1));
   };
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
+    <div className={`${styles.container} tab-big-container`}>
+      <div className={`${styles.header} tab-container`}>
         {Object.keys(sections)?.map((key) => (
           <div
-            className={`${styles.section} ${
+            className={`${styles.section}  ${
               activeSectionKey === key ? styles.active : ""
             } `}
             key={key}
