@@ -1,9 +1,7 @@
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import { useEffect, useRef } from "react";
 import { ArrowDown } from "react-feather";
-// import ReactToPrint from "react-to-print";
 import { useEditorContext } from "../../Context/EditorProvider";
+import { constraints } from "../../utils/captureScreen";
 import { colors } from "../../utils/constants";
 import Editor from "../Editor/Editor";
 import Resume from "../Resume/Resume";
@@ -12,25 +10,34 @@ import styles from "./Body.module.css";
 const Body = () => {
   const { activeColor, setActiveColor } = useEditorContext();
   const resumeRef = useRef();
-  const exportPDF = () => {
-     const el = document.getElementById("pdf-print");
-    html2canvas(el,{
-      width: el.clientWidth,
-      height: el.clientHeight,
-    }).then((canvas)=>{
-      const imgData =  canvas.toDataURL('image/png');
-      console.log(imgData);
-      //   const pdf = new jsPDF({
-      //     orientation: 'portrait',
-      //   });
-      // const imgProps= pdf.getImageProperties(imgData);
-      // const pdfWidth = pdf.internal.pageSize.getWidth();
-      // const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      // pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      // // let pdf = new jsPDF('p','px',[900,900])
-      // // pdf.save( 'cv.pdf' ) ;
-  })
-}
+  const exportPDF = async () => {
+    const el = document.getElementById("pdf-print");
+    el.scrollIntoView({ behavior: "smooth" });
+    document.body.classList.add("overflow-hidden");
+    try {
+      const stream = await navigator.mediaDevices.getDisplayMedia(constraints);
+      const video = document.createElement("video");
+      video.addEventListener("loadedmetadata", () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        video.play();
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        stream.getVideoTracks()[0].stop();
+        const image = canvas.toDataURL("image/jpeg", 1.0);
+        var link = document.createElement("a");
+        link.href = image;
+        link.download = "cv.jpeg";
+        link.click();
+        document.body.classList.remove("overflow-hidden");
+        return image;
+      });
+      video.srcObject = stream;
+    } catch (error) {
+      alert("Failed to capture screenshot!");
+    }
+  };
   useEffect(() => {
     document.documentElement.style.setProperty("--first-color", activeColor[0]);
     document.documentElement.style.setProperty(
@@ -56,18 +63,6 @@ const Body = () => {
             />
           ))}
         </div>
-        {/* <ReactToPrint
-          trigger={() => {
-            // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
-            // to the root node of the returned component as it will be overwritten.
-            return (
-              <button>
-                Download <ArrowDown />
-              </button>
-            );
-          }}
-          content={() => resumeRef.current}
-        /> */}
         <button onClick={() => exportPDF()}>
           Download <ArrowDown />
         </button>

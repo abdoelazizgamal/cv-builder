@@ -8,23 +8,22 @@ const GenerateResumeSections = () => {
   const [source, setSource] = useState("");
   const [target, seTarget] = useState("");
   const swapSourceTarget = (source, target) => {
-    console.log(source, target);
     if (!source || !target) return;
     const tempColumns = [[...columns[0]], [...columns[1]]];
 
-    let sourceRowIndex = tempColumns[0].findIndex((item) => item === source);
+    let sourceRowIndex = tempColumns[0].indexOf(source);
 
     let sourceColumnIndex = 0;
     if (sourceRowIndex < 0) {
       sourceColumnIndex = 1;
-      sourceRowIndex = tempColumns[1].findIndex((item) => item === source);
+      sourceRowIndex = tempColumns[1].indexOf(source);
     }
 
-    let targetRowIndex = tempColumns[0].findIndex((item) => item === target);
+    let targetRowIndex = tempColumns[0].indexOf(target);
     let targetColumnIndex = 0;
     if (targetRowIndex < 0) {
       targetColumnIndex = 1;
-      targetRowIndex = tempColumns[1].findIndex((item) => item === target);
+      targetRowIndex = tempColumns[1].indexOf(target);
     }
 
     const tempSource = tempColumns[sourceColumnIndex][sourceRowIndex];
@@ -35,7 +34,6 @@ const GenerateResumeSections = () => {
 
     setColumns(tempColumns);
   };
-
   useEffect(() => {
     swapSourceTarget(source, target);
     return () => {
@@ -43,7 +41,7 @@ const GenerateResumeSections = () => {
       seTarget(null);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [source, target]);
+  }, [source]);
 
   useEffect(() => {
     setColumns([

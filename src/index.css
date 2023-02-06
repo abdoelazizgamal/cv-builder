@@ -32,10 +32,12 @@ body {
 [draggable="true"] {
   cursor: move;
 }
-#pdf-print
-{
+#pdf-print {
   width: fit-content;
-  /* padding: 10px; */
+  padding: 10px;
   margin: 0 auto;
   /* background:  #333; */
+}
+.overflow-hidden {
+  overflow: hidden;
 }
