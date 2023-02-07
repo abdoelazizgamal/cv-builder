@@ -11,6 +11,46 @@
   background: #232323;
   color: #fff;
 }
+::-webkit-scrollbar {
+  box-shadow: -3rem 0 3rem -2rem #000;
+  background: linear-gradient(to right, #111, #262626);
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(
+    to bottom,
+    var(--first-color),
+    var(--second-color)
+  );
+  border-radius: 50px;
+}
+[draggable="true"] {
+  cursor: move;
+}
+#pdf-print {
+  width: fit-content;
+  padding: 10px;
+  margin: 0 auto;
+  /* background:  #333; */
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.light .App {
+  background-color: #fff;
+  color: #333;
+}
+
+.light::-webkit-scrollbar {
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to right, #ddd, #e8e8e8);
+  width: 7px;
+}
+.light .inputs .input {
+  color: #444;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
 .light .heading {
   color: #333;
 }
@@ -28,4 +68,9 @@
 .light .item .link svg,
 .light .links .link svg {
   color: #333;
+}
+@media (max-width: 800px) {
+  #pdf-print {
+    width: 100%;
+  }
 }

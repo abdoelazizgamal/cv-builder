@@ -177,3 +177,19 @@
 .hidden {
   display: none;
 }
+@media (max-width: 800px) {
+  .container {
+    min-width: auto;
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .main {
+    flex-wrap: wrap;
+  }
+  .main .col1,
+  .main .col2 {
+    width: 100%;
+    flex-basis: 100%;
+  }
+}

@@ -40,3 +40,24 @@
 .right img {
   width: 70%;
 }
+@media (max-width: 1024px) {
+  .container > div {
+    width: 100%;
+  }
+  .heading {
+    font-size: 2rem;
+    max-width: 100%;
+    line-height: 3.1rem;
+  }
+}
+@media (max-width: 790px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .right {
+    justify-content: flex-start;
+  }
+}

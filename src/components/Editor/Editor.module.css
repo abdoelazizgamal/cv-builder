@@ -20,7 +20,12 @@
   /* box-shadow: 0rem 0 5rem -1rem #000; */
   box-shadow: inset 0rem 0 5rem -1rem #111;
 }
-
+.header::-webkit-scrollbar {
+  box-shadow: inherit;
+  background: inherit;
+  width: inherit;
+  height: 7px;
+}
 /* .header::-webkit-scrollbar {
   height: 7px;
 }
@@ -162,4 +167,12 @@
 
 .body button:active {
   transform: translateY(2px);
+}
+@media (max-width: 768px) {
+  .detail .row {
+    flex-wrap: wrap;
+  }
+  .detail .row > div {
+    flex: 1 0 100%;
+  }
 }

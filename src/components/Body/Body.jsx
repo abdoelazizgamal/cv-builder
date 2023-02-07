@@ -30,12 +30,14 @@ const Body = () => {
         link.href = image;
         link.download = "cv.jpeg";
         link.click();
-        document.body.classList.remove("overflow-hidden");
+
         return image;
       });
       video.srcObject = stream;
     } catch (error) {
       alert("Failed to capture screenshot!");
+    } finally {
+      document.body.classList.remove("overflow-hidden");
     }
   };
   useEffect(() => {
