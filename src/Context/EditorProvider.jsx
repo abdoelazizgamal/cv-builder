@@ -4,7 +4,7 @@ import { colors, information, sections } from "../utils/constants";
 const EditorContext = createContext({});
 
 const EditorProvider = ({ children }) => {
-  const [mode, SetMode] = useState("dark");
+  const [mode, SetMode] = useState("light");
   const changeMode = () => {
     mode === "light" ? SetMode("dark") : SetMode("light");
   };

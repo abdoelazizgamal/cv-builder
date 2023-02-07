@@ -10,17 +10,22 @@ label {
 }
 
 input {
-  border: 1px solid #cccccc;
+  /* border: 1px solid #cccccc; */
   outline: none;
   padding: 10px 12px;
   font-size: 1rem;
   border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  box-shadow: inset 0rem 0 3rem -1rem #00000073;
+  color: #fff;
 }
 
-input:hover {
+/* input:hover {
   border: 1px solid #adadad;
-}
+} */
 
-input:focus {
+/* input:focus {
   border: 1px solid #239ce2;
-}
+} */

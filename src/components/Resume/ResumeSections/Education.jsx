@@ -15,8 +15,8 @@ const Education = ({ seTarget, setSource }) => {
     >
       <div className={styles.sectionTitle}>{info.education?.sectionTitle}</div>
       <div className={styles.content}>
-        {info.education?.details?.map((item) => (
-          <div className={styles.item}>
+        {info.education?.details?.map((item, index) => (
+          <div className={styles.item} key={index}>
             {item.title ? (
               <p className={styles.title}>{item.title}</p>
             ) : (
