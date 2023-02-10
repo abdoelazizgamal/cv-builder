@@ -25,14 +25,16 @@
 }
 
 .header .subHeading {
-  -webkit-background-clip: text;
+  /* -webkit-background-clip: text;
   background-clip: text;
   background-image: linear-gradient(
     to right,
     var(--first-color),
     var(--second-color)
-  );
+  ); 
   color: transparent;
+  */
+  color: var(--first-color);
   font-weight: 500;
   font-size: 1.1rem;
 }
@@ -124,13 +126,14 @@
 
 .content .subTitle {
   font-weight: bold;
-  background-clip: text;
+  /* background-clip: text;
   background-image: linear-gradient(
     to right,
     var(--first-color),
     var(--second-color)
   );
-  color: transparent;
+  color: transparent; */
+  color: var(--first-color);
   font-size: 1rem;
 }
 
