@@ -12,8 +12,12 @@ const Resume = forwardRef((props, ref) => {
     <div ref={ref} id="pdf-print">
       <div className={`${styles.container}  pdf-container`}>
         <div className={styles.header}>
-          <p className={styles.heading}>Name</p>
-          <p className={styles.subHeading}>BlockChain Developer</p>
+          {info.basicInfo?.detail?.name && (
+            <p className={styles.heading}>{info.basicInfo?.detail?.name}</p>
+          )}
+          {info.basicInfo?.detail?.title && (
+            <p className={styles.subHeading}>{info.basicInfo?.detail?.title}</p>
+          )}
           <div className={`${styles.links} links`}>
             {info.basicInfo?.detail?.email ? (
               <a className={`${styles.link} link`} type="email" href="test">
