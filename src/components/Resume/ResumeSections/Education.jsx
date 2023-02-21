@@ -23,7 +23,7 @@ const Education = ({ seTarget, setSource }) => {
               <span />
             )}
             {item.college ? (
-              <p className={styles.subTitle}>Some college name</p>
+              <p className={styles.subTitle}>{item.college}</p>
             ) : (
               <span />
             )}
